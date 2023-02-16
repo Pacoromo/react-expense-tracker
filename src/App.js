@@ -1,8 +1,8 @@
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 import items from "./components/Data";
 
-function App() {
-  
+const App = () => {
+
   return (
     <div>
       <h2>Paco Eres Cabron!</h2>
