@@ -1,11 +1,12 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 import items from "./components/Data";
 
 const App = () => {
 
   return (
     <div>
-      <h2>Paco Eres Cabron!</h2>
+      <NewExpense />
       <Expenses items={items} />
     </div>
   );
