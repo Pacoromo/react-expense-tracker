@@ -1,24 +1,105 @@
-import React from "react";
+import { React, useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
+    const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredAmount, setEnteredAmount] = useState("");
+    const [enteredDate, setEnteredDate] = useState("");
+
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: "",
+    //     enteredAmount: "",
+    //     enteredDate: ""
+    // });// Optional!
+
+    const titleChangeHandler = (e) => {
+        setEnteredTitle(e.target.value); // Optional!
+        // setUserInput({
+        //     ...userInput,
+        //     enteredTitle: e.target.value
+        // }); not a good practice because it could take a diferent state an not the exact previous one.
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredTitle: e.target.value }; //best practice if you use one state
+        // });
+    };
+
+    const amountChangeHandler = (e) => {
+        setEnteredAmount(e.target.value); //Optional!
+        // setUserInput({
+        //     ...userInput,
+        //     enteredAmount: e.target.value
+        // }); not a good practice because it could take a diferent state an not the exact previous one.
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredAmount: e.target.value };
+        // });
+    };
+
+    const dateChangeHandler = (e) => {
+        setEnteredDate(e.target.value); //Optional!
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate: e.target.value
+        // }); not a good practice because it could take a diferent state an not the exact previous one.
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredDate: e.target.value };
+        // });
+    };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+
+        console.log(expenseData);
+        setEnteredTitle("");
+        setEnteredAmount("");
+        setEnteredDate("");
+
+    };
+
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
-                    <label>
-                        Title <input type="text" />
-                    </label>
+                    <label htmlFor="title">Title </label>
+                    <input
+                        required
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={enteredTitle}
+                        onChange={titleChangeHandler}
+                    />
                 </div>
                 <div className="new-expense__control">
-                    <label>
-                        Amount <input type="number" min="0.01" step="0.01" />
-                    </label>
+                    <label htmlFor="amount">Amount</label>
+                    <input
+                        required
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        id="amount"
+                        name="amount"
+                        value={enteredAmount}
+                        onChange={amountChangeHandler}
+                    />
                 </div>
                 <div className="new-expense__control">
-                    <label>
-                        Date <input type="date" min="2022-01-01" max="2023-12-31" />
-                    </label>
+                    <label htmlFor="date">Date</label>
+                    <input
+                        required
+                        type="date"
+                        min="2022-01-01"
+                        max="2023-12-31"
+                        id="date"
+                        name="date"
+                        value={enteredDate}
+                        onChange={dateChangeHandler}
+                    />
                 </div>
             </div>
             <div className="new-expense__actions">
