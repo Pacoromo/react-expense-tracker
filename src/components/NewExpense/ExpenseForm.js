@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({onSaveExpenseData}) => {
+const ExpenseForm = ({ onSaveExpenseData }) => {
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnteredDate] = useState("");
@@ -36,6 +36,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
 
     const dateChangeHandler = (e) => {
         setEnteredDate(e.target.value); //Optional!
+        console.log(e.target.value);
         // setUserInput({
         //     ...userInput,
         //     enteredDate: e.target.value
@@ -51,7 +52,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
-            date: new Date(enteredDate)
+            date: new Date(enteredDate.replace(/-/g, "/")) //https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
         };
         onSaveExpenseData(expenseData);
         setEnteredTitle("");
