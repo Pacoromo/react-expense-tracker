@@ -17,7 +17,7 @@ const Expenses = ({ items }) => {
                 selected={yearSelected}
                 onYearSelection={yearSelectionHandler}
             />
-            {items.map((item) => (
+            {items.filter(item => item.date.getFullYear() === +yearSelected).map((item) => (
                 <ExpenseItem
                     key={item.id}
                     title={item.title}
