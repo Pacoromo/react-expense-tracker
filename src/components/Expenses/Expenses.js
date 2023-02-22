@@ -45,7 +45,7 @@ const Expenses = ({ items }) => {
                         amount={item.amount}
                         date={item.date}
                     />
-                ))} Option 3 */}
+                ))} Option 2 */}
 
             {/* {filteredItems.length === 0 ? (
                 <p>No expenses found.</p>
@@ -58,7 +58,7 @@ const Expenses = ({ items }) => {
                         date={item.date}
                     />
                 ))
-            )} OPTION 2*/}
+            )} OPTION 3 */}
         </Card>
     );
 };
