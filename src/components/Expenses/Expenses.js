@@ -11,20 +11,54 @@ const Expenses = ({ items }) => {
         setYearSelected(selection);
     };
 
+    const filteredItems = items.filter(
+        (item) => item.date.getFullYear() === +yearSelected
+    );
+
+    let expensesContent = <p>No expenses found.</p>;
+
+    if (filteredItems.length > 0) {
+        expensesContent = filteredItems.map((item) => (
+            <ExpenseItem
+                key={item.id}
+                title={item.title}
+                amount={item.amount}
+                date={item.date}
+            />
+        ));
+    }
+
     return (
         <Card className="expenses">
             <ExpensesFilter
                 selected={yearSelected}
                 onYearSelection={yearSelectionHandler}
             />
-            {items.filter(item => item.date.getFullYear() === +yearSelected).map((item) => (
-                <ExpenseItem
-                    key={item.id}
-                    title={item.title}
-                    amount={item.amount}
-                    date={item.date}
-                />
-            ))}
+            {expensesContent}
+
+            {/* {filteredItems.length === 0 && <p>No expenses found.</p>}
+            {filteredItems.length > 0 &&
+                filteredItems.map((item) => (
+                    <ExpenseItem
+                        key={item.id}
+                        title={item.title}
+                        amount={item.amount}
+                        date={item.date}
+                    />
+                ))} Option 3 */}
+
+            {/* {filteredItems.length === 0 ? (
+                <p>No expenses found.</p>
+            ) : (
+                filteredItems.map((item) => (
+                    <ExpenseItem
+                        key={item.id}
+                        title={item.title}
+                        amount={item.amount}
+                        date={item.date}
+                    />
+                ))
+            )} OPTION 2*/}
         </Card>
     );
 };
