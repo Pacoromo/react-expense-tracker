@@ -50,7 +50,7 @@ const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
 
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate.replace(/-/g, "/")), //https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
         };
         onSaveExpenseData(expenseData);
