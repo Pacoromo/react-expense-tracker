@@ -22,7 +22,7 @@ const Expenses = ({ items }) => {
                 selected={yearSelected}
                 onYearSelection={yearSelectionHandler}
             />
-            <ExpensesChart expenses={filteredItems}/>
+            <ExpensesChart expenses={filteredItems} />
             <ExpensesList items={filteredItems} />
 
             {/* {filteredItems.length === 0 && <p>No expenses found.</p>}
